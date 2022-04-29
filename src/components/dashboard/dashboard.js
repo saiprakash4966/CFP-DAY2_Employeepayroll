@@ -78,8 +78,8 @@ function Dashboard() {
                         </tr>
                         <tr>
                             <td><img className="profile" src={profile_pic_3} alt="profile_img-2"/></td>
-                            <td>Kalyani</td>
-                            <td>Female</td>
+                            <td>Kalyan</td>
+                            <td>Male</td>
                             <td>
                                 <div className="dept-label">HR</div>
                                 <div className="dept-label">Finance</div>
