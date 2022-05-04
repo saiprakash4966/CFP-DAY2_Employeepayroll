@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './dashboard.css';
-import profile_pic_1 from '../../assets/profile-images/Ellipse -3.png';
-import profile_pic_2 from '../../assets/profile-images/Ellipse -1.png';
-import profile_pic_3 from '../../assets/profile-images/Ellipse -8.png';
-import editEmp from '../../assets/icons/create-black-18dp.svg';
-import deleteEmp from '../../assets/icons/delete-black-18dp.svg';
 import logo from '../../assets/images/logo.png'
 import {Link} from "react-router-dom";
-
+import EmployeeService from "../../services/employee-service";
+import Employee from "./employee";
 
 function Dashboard() {
+
+    const [employeeArray, setEmployee] = useState([]);
+
+    useEffect(() => {
+        getAllEmployees();
+    }, []);
+
+    const getAllEmployees = () => {
+       EmployeeService.getallEmployee().then(employee => {
+           const allEmployees = employee.data;
+           setEmployee(allEmployees);
+       }).catch((error) => {
+           alert(error);
+       })
+    }
 
     return (
         <>
@@ -27,71 +38,15 @@ function Dashboard() {
                 <div className="header-content employee-header">
                     <div className="emp-detail-text">
                         Employee Details
-                        <div className="emp-count">10</div>
+                        <div className="emp-count"></div>
                     </div>
                     <Link to="/payroll" className="add-button">
-                        <img className="add-button" src="../assets/plus_symbol.svg" alt=""/>Add Employee
+                        <div className="add-button">Add Employee</div>
                     </Link>
-
                 </div>
 
                 <div className="table-main">
-                    <table id="table-display" className="table">
-                        <tr>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Gender</th>
-                            <th>Department</th>
-                            <th>Salary</th>
-                            <th>Start Date</th>
-                            <th>Actions</th>
-                        </tr>
-                        <tr>
-                            <td><img className="profile" src={profile_pic_1} alt="profile_img-1"/></td>
-                            <td>Saiprakash</td>
-                            <td>Male</td>
-                            <td>
-                                <div className="dept-label">HR</div>
-                                <div className="dept-label">Finance</div>
-                            </td>
-                            <td>5000000</td>
-                            <td>19 Jan 2022</td>
-                            <td>
-                                <img src={editEmp} alt="delete" id="1" onClick="remove(this)"/>
-                                <img src={deleteEmp} alt="edit" id="1" onClick="update(this)"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img className="profile" src={profile_pic_2} alt="profile_img-2"/></td>
-                            <td>Shivani</td>
-                            <td>Female</td>
-                            <td>
-                                <div className="dept-label">HR</div>
-                                <div className="dept-label">Finance</div>
-                            </td>
-                            <td>6000000</td>
-                            <td>19 Jan 2022</td>
-                            <td>
-                                <img src={editEmp} alt="delete" id="1" onClick="remove(this)"/>
-                                <img src={deleteEmp} alt="edit" id="1" onClick="update(this)"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><img className="profile" src={profile_pic_3} alt="profile_img-2"/></td>
-                            <td>Kalyani</td>
-                            <td>Female</td>
-                            <td>
-                                <div className="dept-label">HR</div>
-                                <div className="dept-label">Finance</div>
-                            </td>
-                            <td>7000000</td>
-                            <td>19 Jan 2022</td>
-                            <td>
-                                <img src={editEmp} alt="delete" id="1" onClick="remove(this)"/>
-                                <img src={deleteEmp} alt="edit" id="1" onClick="update(this)"/>
-                            </td>
-                        </tr>
-                    </table>
+                    <Employee employeeArray={employeeArray}/>
                 </div>
             </div>
         </>

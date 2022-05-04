@@ -1,0 +1,114 @@
+{
+  "employee": [
+    {
+      "name": "manoj kumar",
+      "department": [
+        "HR"
+      ],
+      "gender": "male",
+      "salary": "358400",
+      "startDate": "19 Jan 2021",
+      "notes": "sai",
+      "id": 1604589594363,
+      "profileURL": "../../assets/profile-images/Ellipse -3.png"
+    },
+    {
+      "name": "rohit",
+      "gender": "male",
+      "department": [
+        "HR"
+      ],
+      "salary": "300700",
+      "startDate": "1 Jan 2020",
+      "notes": "hi",
+      "id": 1604589699566,
+      "profileURL": "../../assets/profile-images/Ellipse -8.png"
+    },
+    {
+      "name": "chandu",
+      "gender": "male",
+      "department": [
+        "HR"
+      ],
+      "salary": "305000",
+      "startDate": "1 Jan 2020",
+      "notes": "ddd",
+      "id": 1604589731061,
+      "profileURL": "../../assets/profile-images/Ellipse -3.png"
+    },
+    {
+      "name": "sravani",
+      "department": [
+        "Finance"
+      ],
+      "gender": "female",
+      "salary": "470700",
+      "startDate": "1 Jan 2021",
+      "notes": "ss",
+      "id": 1604589731062,
+      "profileURL": "../../assets/profile-images/Ellipse -1.png"
+    },
+    {
+      "name": "prakash",
+      "department": [
+        "Finance",
+        "Engineer"
+      ],
+      "gender": "male",
+      "salary": "500000",
+      "startDate": "1 9 2019",
+      "notes": "Hi Jack",
+      "id": 1604589731063,
+      "profileURL": "../../assets/profile-images/Ellipse -8.png"
+    },
+    {
+      "name": "siva",
+      "department": [
+        "HR"
+      ],
+      "gender": "male",
+      "salary": "5500000",
+      "startDate": "18 Jan 2021",
+      "notes": "ss",
+      "id": 1604589731064,
+      "profileURL": "../../assets/profile-images/Ellipse -3.png"
+    },
+    {
+      "name": "saikumar",
+      "department": [
+        "HR",
+        "Sales"
+      ],
+      "gender": "male",
+      "salary": "425300",
+      "startDate": "18 Jan 2021",
+      "notes": "sss",
+      "id": 1604589731065,
+      "profileURL": "../../assets/profile-images/Ellipse -8.png"
+    },
+    {
+      "name": "shivani",
+      "department": [
+        "HR"
+      ],
+      "gender": "female",
+      "salary": "474700",
+      "startDate": "1 Feb 2021",
+      "notes": "ss",
+      "id": 1604589731066,
+      "profileURL": "../../assets/profile-images/Ellipse -1.png"
+    },
+    {
+      "name": "nag",
+      "department": [
+        "Sales"
+      ],
+      "gender": "male",
+      "salary": "200000",
+      "startDate": "19 Nov 2020",
+      "notes": "abcd",
+      "id": 1604589731067,
+      "profileURL": "../../assets/profile-images/Ellipse -3.png"
+    }
+  ]
+}
