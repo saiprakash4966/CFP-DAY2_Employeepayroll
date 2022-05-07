@@ -73,7 +73,7 @@ const AddUser = (props) => {
          gender: obj.gender,
          departMentValue: obj.department,
          salary: obj.salary,
-         //startDate: obj.startDate,
+        //  startDate: obj.startDate,
          notes: obj.notes,
          isUpdate: true,
          
@@ -88,8 +88,49 @@ const AddUser = (props) => {
         getEmployeeByID(params.id);
     }
 }, []);
+const validateData = async () => {
+    let isError = false;
+    let error = {
+        department: '',
+        name: '',
+        gender: '',
+        salary: '',
+        profileURL: '',
+        startDate: '',
+        notes:''
+    }
+    if (!user.name.match('^[A-Z]{1}[a-z]{2,}([ ][A-Z]{1}[a-z]{2,})?$')) {
+        error.name = 'Invalid NAME'
+        isError = true;
+    }
+    if (user.gender.length < 1) {
+        error.gender = 'Select GENDER'
+        isError = true;
+    }
+    if (user.salary.length < 1) {
+        error.salary = 'Required SALARY'
+        isError = true;
+    }
+    if (user.profileURL.length < 1) {
+        error.profileURL = 'Select PROFILE PIC'
+        isError = true;
+    }
+    if (user.departMentValue.length < 1) {
+        error.department = 'Select DEPARTMENT'
+        isError = true;
+    }
+    if (user.notes.length < 1){
+        error.notes = "Required NOTES"
+        isError = true;
+    }
+    setUser({ ...user, error: error })
+    return isError;
+}
  const save = async (event) => {
     event.preventDefault();
+    if (await validateData()) {
+        return;
+    }
     let object = {
         name: user.name,
         department: user.departMentValue,
@@ -151,7 +192,7 @@ const AddUser = (props) => {
                     <div className="row-content">
                         <label className="label text" htmlFor="name">Name</label>
                         <input className="input" type="text" id="name" name="name" value={user.name} onChange={changeValue} placeholder="Your name.." />
-                        {/* <error className="error">{user.error.name}</error> */}
+                        <div className="error">{user.error.name}</div>
                     </div>
                     <div className="row-content">
                         <label className="label text" htmlFor="profileURL">Profile image</label>
@@ -174,7 +215,7 @@ const AddUser = (props) => {
                             </label>
 
                         </div>
-                        {/* <error className="error">{user.error.profileURL}</error> */}
+                        <error className="error">{user.error.profileURL}</error>
                     </div>
                     <div className="row-content">
                         <label className="label text" htmlFor="gender">Gender</label>
@@ -184,7 +225,7 @@ const AddUser = (props) => {
                             <input type="radio" id="female" checked={user.gender === 'female'} onChange={changeValue} name="gender" value="female" />
                             <label className="text" htmlFor="female">Female</label>
                         </div>
-                        {/* <error className="error">{user.error.gender}</error> */}
+                        <error className="error">{user.error.gender}</error>
                     </div>
                     <div className="row-content">
                         <label className="label text" htmlFor="department">Department</label>
@@ -198,13 +239,13 @@ const AddUser = (props) => {
                             ))}
 
                         </div>
-                        {/* <error className="error">{user.error.department}</error> */}
+                        <error className="error">{user.error.department}</error>
                     </div>
 
                     <div className="row-content">
                         <label className="label text" htmlFor="salary">Salary</label>
                         <input className="input" type="text" id="salary" name="salary" value={user.salary} onChange={changeValue} />
-                        {/* <error className="error">{user.error.salary}</error> */}
+                        <div className="error">{user.error.salary}</div>
                     </div>
 
                     <div className="row-content">
@@ -276,7 +317,7 @@ const AddUser = (props) => {
                         <label className="label text" htmlFor="notes">Notes</label>
                         <textarea onChange={changeValue} id="notes" value={user.notes} className="input" name="notes" placeholder=""
                             style={{ height: '120%' }}></textarea>
-                        {/* <error className="error">{user.error.notes}</error> */}
+                        <error className="error">{user.error.notes}</error>
                     </div>
 
                     <div className="buttonParent">

@@ -109,6 +109,18 @@
       "notes": "abcd",
       "id": 1604589731067,
       "profileURL": "../../assets/profile-images/Ellipse -3.png"
+    },
+    {
+      "name": "Sai",
+      "department": [
+        "HR"
+      ],
+      "gender": "male",
+      "salary": "20000",
+      "startDate": "18 Nov 2017",
+      "notes": "gggg",
+      "id": 1604589731068,
+      "profileURL": "../../assets/profile-images/Ellipse -3.png"
     }
   ]
 }
