@@ -12,12 +12,12 @@ import EmployeeService from "../../services/employee-service";
 
 const Employee = (props) => {
 
-    const update= (id) => {
-        props.history.push(`payroll/${id}`);
+    const update= (employeeId) => {
+        props.history.push(`payroll/${employeeId}`);
     }
 
-    const remove = (id) => {
-        EmployeeService.deleteEmployee(id).then((response) => {
+    const remove = (employeeId) => {
+        EmployeeService.deleteEmployee(employeeId).then((response) => {
             console.log(response.data);
             window.location.reload();
         }).catch((error) =>{
@@ -40,15 +40,15 @@ const Employee = (props) => {
                 {
                     props.employeeArray && props.employeeArray.map((element, index) =>(
                        <tr key={index}>
-                            <td>{element.id}</td>
+                            <td>{element.employeeId}</td>
                             <td><img className="profile" src={
-                                element.profileURL ===
+                                element.profilePic ===
                                 "../../assets/profile-images/Ellipse -1.png"
                                   ? profile_pic_2
-                                  : element.profileURL ===
+                                  : element.profilePic ===
                                     "../../assets/profile-images/Ellipse -3.png"
                                   ? profile_pic_1
-                                  : element.profileURL ===
+                                  : element.profilePic ===
                                     "../../assets/profile-images/Ellipse -7.png"
                                   ? profile_pic_4
                                   : profile_pic_3
@@ -56,14 +56,14 @@ const Employee = (props) => {
                             <td>{element.name}</td>
                             <td>{element.gender}</td>
                             <td>
-                                {element.department && element.department.map((dept => 
+                                {element.departments && element.departments.map((dept =>
                                     (<div className="dept-label">{dept}</div>)))}
                             </td>
                             <td>{element.salary}</td>
                             <td>{element.startDate}</td>
                             <td>
-                                <img src={editEmp} alt="edit" onClick={() => update(element.id)}/>
-                                <img src={deleteEmp} alt="delete" onClick={() => remove(element.id)} />
+                                <img src={editEmp} alt="edit" onClick={() => update(element.employeeId)}/>
+                                <img src={deleteEmp} alt="delete" onClick={() => remove(element.employeeId)} />
                             </td>
                        </tr> 
                     ))

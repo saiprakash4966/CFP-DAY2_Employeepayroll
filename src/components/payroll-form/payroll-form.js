@@ -54,7 +54,7 @@ const AddUser = (props) => {
 
  const getEmployeeByID = (id) => {
      EmployeeService.getEmployee(id).then((response) => {
-         let obj = response.data;
+         let obj = response.data.data;
          console.log(obj);
          setData(obj);
      }).catch((error) => {
@@ -67,14 +67,14 @@ const AddUser = (props) => {
     setUser({
          ...user,
          ...obj,
-         id: obj.id,
+        id: obj.employeeId,
          name: obj.name,
-         profileURL: obj.profileURL,
+         profileURL: obj.profilePic,
          gender: obj.gender,
-         departMentValue: obj.department,
+         departMentValue: obj.departments,
          salary: obj.salary,
         //  startDate: obj.startDate,
-         notes: obj.notes,
+         notes: obj.note,
          isUpdate: true,
          
          day:array[0]+array[1],
@@ -133,13 +133,12 @@ const validateData = async () => {
     }
     let object = {
         name: user.name,
-        department: user.departMentValue,
+        departments: user.departMentValue,
         gender: user.gender,
         salary: user.salary,
         startDate: `${user.day} ${user.month} ${user.year}`,
-        notes: user.notes,
-        id: user.id,
-        profileURL: user.profileURL,
+        note: user.notes,
+        profilePic: user.profileURL,
     }
     if (user.isUpdate) {
         EmployeeService.updateEmployee(params.id, object).then((response) => {
@@ -149,8 +148,9 @@ const validateData = async () => {
         })
     }
     else {
-        EmployeeService.addEmployee(object).then(() => {
-            console.log("data added successfully");
+        EmployeeService.addEmployee(object).then((response) => {
+            alert("data added successfully");
+            console.log("data added successfully",response.data.data);
             props.history.push('');
         }).catch((error) => {
             alert(error);

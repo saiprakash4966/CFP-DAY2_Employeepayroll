@@ -15,7 +15,7 @@ function Dashboard() {
 
     const getAllEmployees = () => {
        EmployeeService.getallEmployee().then(employee => {
-           const allEmployees = employee.data;
+           const allEmployees = employee.data.data;
            setEmployee(allEmployees);
        }).catch((error) => {
            alert(error);
